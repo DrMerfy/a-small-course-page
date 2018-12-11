@@ -1,0 +1,147 @@
+/*https://coolors.co/1b998b-1d1f2e-fffd82-ff9b71-e84855*/
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: 'Fira Sans Condensed', sans-serif;
+    color: #212121;
+}
+
+/* Navigation */
+
+nav {
+    background-color: #2D3047;
+    height: 100%; width: 250px;
+    padding: 20px 0;
+    margin-right: 20px;
+    position: fixed;
+}
+
+nav ul {
+    padding: 0;
+    margin: 0;
+}
+
+nav li {
+    box-sizing: border-box;
+    font-size: 1.1em;
+    font-variant: small-caps;
+    height: 40px; width: 100%;
+    margin-top: 10px;
+    min-height: 40px;
+    padding-left: 10px;
+}
+
+nav li:hover {
+    background-color: #25283B;
+    cursor: pointer;
+}
+
+nav li.selected {
+    background-color: #1D1F2E;
+    border-right: 5px solid #541b99;
+}
+
+nav li > a {
+    align-items: center;
+    box-sizing: border-box;
+    color: white;
+    display: flex;
+    height: 100%;
+    text-decoration: none;
+    margin: 0;
+}
+
+nav li i {
+    margin-right: 10px;
+}
+
+/* General Styles */
+
+main {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-left: 250px;
+    overflow: hidden;
+    position: relative;
+    padding: 20px;
+    text-align: center;
+    justify-content: center;
+    width: calc(100% - 300px);
+}
+
+main h1 {
+    font-size: 2em;
+    padding-bottom: 20px;
+}
+
+main > p {
+    line-height: 150%;
+    margin-bottom: 20px;
+}
+
+.bold-text {
+    font-weight: bold;
+}
+
+.none {
+    display: none;
+    opacity: 0;
+    transition: .5s;
+}
+
+/* Index */
+
+.image-holder > img {
+    border: 4px solid white;
+    box-shadow: 0 0 10px 0 black;
+    width: 40%; height: auto;
+}
+
+.image-holder > p {
+    color: #414141;
+    padding-top: 5px; 
+    transform: translateX(10%);
+}
+
+.image-holder a {
+    color: #212121;
+}
+
+/* Announcements Page */
+
+.announcement {
+    border: solid 3px #424242;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    padding: 10px 10px;
+    padding-bottom: 5px; /* Each element has 5px bottom margin */
+    width: 50vw; max-width: 600px;
+}
+
+.announcement > h2 {
+    color: #FF9B71;
+    font-weight: bold;
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.announcement > .subject {
+    margin-bottom: 15px;
+}
+
+.announcement > * {
+    margin-bottom: 5px;
+}
+
+#bottom-arrow {
+    background-image: url(./images/icons/top.svg);
+    bottom: 50px; right: 50px;
+    cursor: pointer;
+    display: block;
+    height: 70px; width: 70px; 
+    position: fixed;
+    transition: .5s;
+}
