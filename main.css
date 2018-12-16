@@ -1,4 +1,11 @@
 /*https://coolors.co/1b998b-1d1f2e-fffd82-ff9b71-e84855*/
+:root {
+    --color-light-gray: #424242;
+    --color-accent: #991b60;
+    --color-accent-light: #cc227d;
+    --color-accent-lighter: #ec71b3;
+}
+
 html, body {
     height: 100%;
 }
@@ -53,6 +60,10 @@ nav li > a {
     margin: 0;
 }
 
+nav li > a:visited {
+    color: white;
+}
+
 nav li i {
     margin-right: 10px;
 }
@@ -80,6 +91,63 @@ main h1 {
 main > p {
     line-height: 150%;
     margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form > * {
+    margin-bottom: 10px;
+}
+
+form > p {
+    align-self: flex-start;
+}
+
+input {
+    border: none;
+    border-bottom: dashed 1px black;
+}
+
+input:focus {
+    border-bottom: solid 2px var(--color-accent);
+    box-shadow: 0 3px 3px -3px var(--color-accent);
+    outline: none;
+}
+
+input[type=submit] {
+    background-color: var(--color-accent);
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    height: 40px;
+}
+
+input[type=submit]:focus {
+    box-shadow: 0 0px 15px var(--color-accent-light);
+}
+
+
+textarea {
+    border: dashed 1px black;
+    border-radius: 5px;
+}
+
+textarea:focus {
+    border: none;
+    outline-color: var(--color-accent);
+}
+
+a {
+    color: var(--color-accent-light);
+}
+
+a:visited {
+    color: var(--color-accent-lighter);
 }
 
 .bold-text {
@@ -112,8 +180,8 @@ main > p {
 
 /* Announcements Page */
 
-.announcement {
-    border: solid 3px #424242;
+.list-box {
+    border: solid 3px var(--color-light-gray);
     border-radius: 6px;
     margin-bottom: 20px;
     padding: 10px 10px;
@@ -121,18 +189,18 @@ main > p {
     width: 50vw; max-width: 600px;
 }
 
-.announcement > h2 {
+.list-box > h2 {
     color: #FF9B71;
     font-weight: bold;
     text-align: left;
     text-transform: capitalize;
 }
 
-.announcement > .subject {
+.list-box > .subject {
     margin-bottom: 15px;
 }
 
-.announcement > * {
+.list-box > * {
     margin-bottom: 5px;
 }
 
@@ -144,4 +212,30 @@ main > p {
     height: 70px; width: 70px; 
     position: fixed;
     transition: .5s;
+}
+
+/* Communication */
+
+#communication-container {
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    height: 93vh; width: 100%;
+    justify-content: space-evenly;
+}
+
+.contact-box {
+    border: solid 3px var(--color-light-gray);
+    border-radius: 6px;
+    padding: 30px;
+    width: 40%;
+}
+
+.contact-box > * {
+    margin-bottom: 15px;
+}
+
+/* Documents */
+.doc-box > *{
+    margin-bottom: 15px;
 }
