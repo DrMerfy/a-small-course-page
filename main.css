@@ -165,6 +165,28 @@ a:visited {
     transition: .5s;
 }
 
+/* Login Page */
+#login-page {
+    display: block;
+    height: 100%; width: 100%;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+#login-page form {
+    border: solid 1px magenta; 
+    height: 50%; width: 300px;
+    left: 50%; top:50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+}
+
+#login-page form button {
+    height: 100px;
+}
+
+
 /* Index */
 
 .image-holder {
