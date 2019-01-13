@@ -1,3 +1,6 @@
+<?php
+        require '../server/checkAuthorization.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,11 +22,11 @@
 <body>
     <nav>
         <ul>
-            <li><a href="../index.html"><i class="fas fa-home"></i>Αρχική σελίδα</a></li>
-            <li><a href="./announcement.html"><i class="fas fa-bullhorn"></i>Ανακοινώσεις</a></li>
-            <li><a href="./communication.html"><i class="fas fa-comment-alt"></i>Επικοινωνία</a></li>
-            <li class="selected"><a href="./documents.html"><i class="fas fa-file-alt"></i>Έγγραφα μαθήματος</a></li>
-            <li><a href="./homework.html"><i class="fas fa-pencil-ruler"></i>Εργασίες</a></li>
+            <li><a href="./start.php"><i class="fas fa-home"></i>Αρχική σελίδα</a></li>
+            <li><a href="./announcement.php"><i class="fas fa-bullhorn"></i>Ανακοινώσεις</a></li>
+            <li><a href="./communication.php"><i class="fas fa-comment-alt"></i>Επικοινωνία</a></li>
+            <li class="selected"><a href="./documents.php"><i class="fas fa-file-alt"></i>Έγγραφα μαθήματος</a></li>
+            <li><a href="./homework.php"><i class="fas fa-pencil-ruler"></i>Εργασίες</a></li>
         </ul>
     </nav>
     <main>

@@ -9,10 +9,12 @@
     --color-accent-dark: #932C61;
     --color-accent-darker: #470024;
     --color-accent-faded: rgb(82, 46, 64);
+    --color-error: #F9690E;
 }
 
 html, body {
     height: 100%;
+    margin: 0;
 }
 
 body {
@@ -165,9 +167,12 @@ a:visited {
     transition: .5s;
 }
 
-/* Login Page */
+/* Login Page  */
 #login-page {
-    display: block;
+    background-blend-mode: screen;
+    background-image: url("./images/login-back.jpg"), linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+    background-position: center;
+    background-size: cover;
     height: 100%; width: 100%;
     margin: 0;
     padding: 0;
@@ -175,17 +180,85 @@ a:visited {
 }
 
 #login-page form {
-    border: solid 1px magenta; 
-    height: 50%; width: 300px;
-    left: 50%; top:50%;
+    align-items: center;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    height: 60vh; width: 40vw;
+    position: relative;
+    z-index: 1;
+}
+
+#login-page form::after {
+    background-image: linear-gradient(to right, #b8cbb8 0%, #b8cbb8 0%, #b465da 0%, #cf6cc9 33%, #ee609c 66%, #ee609c 100%);
+    border-radius: 5px;
+    content: "";
+    height: 100%; width: 100%;
+    left: 0; top: 0; 
+    opacity: .8;
     position: absolute;
-    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+#login-page h2 {
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    justify-self: flex-start;
+}
+
+#login-page input {
+    background: 0;
+    border: 0;
+    border-color: white;
+    border-bottom: solid 3px;
+    color: white;
+    font-size: 1.2rem;
+    height: 30px; width: 50%;
+    margin-top: 20px;
+}
+
+#login-page input::placeholder {
+    color: white;
+    font-size: 1.2rem;
+}
+
+#login-page #error_message {
+    align-self: center;
+    margin: 0;
+    margin-top: 10px;
 }
 
 #login-page form button {
-    height: 100px;
+    background-color: white;
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 0% 100%;
+    border: 0;
+    border-radius: 30px;
+    box-shadow: -0.5px 0 50px #cf6cc9;
+    cursor: pointer;
+    height: 55px; width: 30%;
+    margin-top: 20px;
+    position: relative;
+    transition: background-size .4s, color .4s;
+    z-index: 2;
 }
 
+#login-page form button:hover {
+    background-size: 100% 100%;
+    color: white;
+}
+
+@keyframes fill {
+    0% {
+        background-size: 0 100%;
+    }
+    100% {
+        background-size: 100% 100%;
+    }
+}
 
 /* Index */
 

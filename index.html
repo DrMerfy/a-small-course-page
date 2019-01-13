@@ -12,8 +12,10 @@
 <body>
     <main id="login-page">
         <form>
-            <input type="email" placeholder="email" name="email" required>
-            <input type="password" placeholder="password" name="password" required>
+            <h2>LOGIN</h2>
+            <input type="email" placeholder="email" name="email" required onkeyup="checkForEnter(event)">
+            <input type="password" placeholder="password" name="password" required onkeyup="checkForEnter(event)">
+            <p id="error_message"></p>
             <button type="button" onclick="requestLogin()">Login</button>
         </form>
     </main>
