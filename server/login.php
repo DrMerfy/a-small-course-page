@@ -1,16 +1,8 @@
 <?php
-    // Establise db connection
-    $servername = "localhost";
-    $username = "api_server";
-    $password = "123412";
-    $dbname = "music_site";
+    require './connectDB.php';
+    require './JSONTools.php';
 
-    $db = new mysqli($servername, $username, $password, $dbname);
-
-    if ($db->connect_error) {
-        die("Connection failed: " . $db->connect_error);
-    } 
-
+    $db = connect_to_db();
     $email = $password = ""; 
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -18,15 +10,7 @@
         http_response_code(200);
 
         // Handling jsons
-        // Make sure that the content type of the POST request has been set to application/json
-        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
-
-        if(strcasecmp($contentType, 'application/json') != 0) {
-            die('Content type must be: application/json');
-        }
-
-        $content = trim(file_get_contents("php://input"));
-        $request = json_decode($content, true);
+        $request = get_json_request();
 
         $email = sanetize($request["email"]);
         $password = sanetize($request["password"]);
@@ -42,22 +26,17 @@
 
         if($password == $known_pass) {
             $_SESSION['valid'] = true;
-            $_SESSION['username'] = $username;
+            $_SESSION['username'] = $email;
+            // $_SESSION['role']
             die('{"login":"success"}');
         }else {
             die('{"login":"fail", "error":"passwords no match"}');
         }
+
         http_response_code(500);
         die('{"status": "Unhandled"}');
     }
 
     http_response_code(501);
         die('{"status": "only POST"}');
-
-    function sanetize($data) {
-        $data = trim($data);
-        $data = stripslashes($data);
-        $data = htmlspecialchars($data);
-        return $data;
-    }
 ?>

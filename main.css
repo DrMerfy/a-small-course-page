@@ -288,6 +288,23 @@ a:visited {
 
 /* Announcements Page */
 
+#options {
+    display: flex;
+    flex-direction: row;
+    height: 1rem; width: auto;
+    margin-bottom: 30px;
+}
+
+.plus-icon {
+    background-image: url("./images/icons/plus-square-solid.svg");
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    height: 1rem; width: 1rem;
+    margin-right: 5px;
+}
+
 .list-box {
     border: solid 3px var(--color-light-gray);
     border-radius: 6px;

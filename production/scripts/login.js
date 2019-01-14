@@ -22,6 +22,7 @@ function requestLogin() {
   const ajax = new XMLHttpRequest();
   ajax.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 200) {
+      console.log(this.responseText);
       const response = JSON.parse(this.responseText);
       // Check status
       if (response['login'] === 'fail') {

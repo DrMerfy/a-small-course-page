@@ -1,3 +1,6 @@
+<?php
+        require '../server/checkAuthorization.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,11 +22,11 @@
 <body>
     <nav>
         <ul>
-            <li><a href="../index.html"><i class="fas fa-home"></i>Αρχική σελίδα</a></li>
-            <li class="selected"><a href="./announcement.html"><i class="fas fa-bullhorn"></i>Ανακοινώσεις</a></li>
-            <li><a href="./communication.html"><i class="fas fa-comment-alt"></i>Επικοινωνία</a></li>
-            <li><a href="./documents.html"><i class="fas fa-file-alt"></i>Έγγραφα μαθήματος</a></li>
-            <li><a href="./homework.html"><i class="fas fa-pencil-ruler"></i>Εργασίες</a></li>
+            <li><a href="./start.php"><i class="fas fa-home"></i>Αρχική σελίδα</a></li>
+            <li class="selected"><a href="./announcement.php"><i class="fas fa-bullhorn"></i>Ανακοινώσεις</a></li>
+            <li><a href="./communication.php"><i class="fas fa-comment-alt"></i>Επικοινωνία</a></li>
+            <li><a href="./documents.php"><i class="fas fa-file-alt"></i>Έγγραφα μαθήματος</a></li>
+            <li><a href="./homework.php"><i class="fas fa-pencil-ruler"></i>Εργασίες</a></li>
         </ul>
     </nav>
 
@@ -85,7 +88,7 @@
                 <p class="subject"><span class="bold-text">Θέμα: </span>Έναρξη μαθημάτων</p>
                 <p>Τα μαθήματα αρχίζουν την Δευτέρα 17/12/2008</p>
             </li>
-                
+
             <li class="list-box">
                 <h2>Ανακοίνωση 9</h2>
                 <p><span class="bold-text">Ημερομηνία: </span>15/12/2008</p>
@@ -93,10 +96,10 @@
                 <p>Η 1η εργασία έχει ανακοινωθεί στην ιστοσελίδα <a href="./homework.html">«Εργασίες»</a></p>
             </li>
         </ul>
-        
+
         <!--This element's behaviour is also affected by the bottom_arrow.js -->
         <span id="bottom-arrow" onclick="scrollToTop()"></span>
     </main>
-    
+
 </body>
 </html>
