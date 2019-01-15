@@ -19,6 +19,7 @@
     <!--Scripts for interaction-->
     <script defer src="../scripts/bottom_arrow.js"></script>
     <script defer src="../scripts/load_announcements.js"></script>
+    <script defer src="../scripts/announcement_form.js"></script>
 </head>
 <body>
     <nav>
@@ -38,6 +39,24 @@
         <ul id="announcements-list">
             <!-- async loading of data -->
         </ul>
+
+        <!-- Modal form for adding/editing the announcements -->
+        <div class="modal-form">
+            <button aria-label="close edit form" onclick="close_form()">&times;</button>
+            <form>
+                <p class="bold-text">Ημερομηνία:</p>
+                <p class="date_input"></p>
+                <p class="bold-text">Θέμα:</p>
+                <input class="subject_input" type="text">
+                <p class="bold-text">Κείμενο:</p>
+                <textarea name="text" class="text_input" cols="30" rows="10"></textarea>
+                <div>
+                    <input name="isLinked" class="isLinked_input" type="checkbox" value="Εργασία">
+                    <label for="isLinked">Εργασία</label>
+                <div>
+                <button class="sumbit-btn" type="button" onkeyup="checkForEnterAndSumbit(event)" onclick="sumbit_form()">Αποθήκευση</button>
+            </form>
+        </div>
 
         <!--This element's behaviour is also affected by the bottom_arrow.js -->
         <span id="bottom-arrow" onclick="scrollToTop()"></span>

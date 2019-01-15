@@ -16,18 +16,21 @@
         $password = sanetize($request["password"]);
 
         // Compare passwords
-        $result = $db->query("SELECT password FROM `users` WHERE email='$email'");
+        $result = $db->query("SELECT * FROM `users` WHERE email='$email'");
         
         if ($result->num_rows <= 0) {
             die('{"login":"fail", "error":"email unknown"}');
         }
 
-        $known_pass = $result->fetch_assoc()["password"];
+        $result = $result->fetch_assoc();
+        $known_pass = $result["password"];
 
         if($password == $known_pass) {
             $_SESSION['valid'] = true;
             $_SESSION['username'] = $email;
-            // $_SESSION['role']
+            $_SESSION['role'] = $result["role"];
+
+            setcookie("role", $_SESSION['role'], 0, "/");
             die('{"login":"success"}');
         }else {
             die('{"login":"fail", "error":"passwords no match"}');

@@ -1,4 +1,9 @@
-const list = document.getElementById('announcements-list');
+const userRole = getCookie('role');
+
+// Load tutor specific fields
+if ( userRole === 'tutor') {
+  document.getElementById('options').innerHTML = '<button class="new_announcement_btn" onclick="show_form()"><i class="plus-icon"></i>Προσθήκη νέας ανακοίνωσης</button>';
+}
 
 // Load announcements
 const ajax = new XMLHttpRequest();
@@ -17,13 +22,6 @@ ajax.open('GET', '../server/announcement_endpoint.php', true);
 ajax.setRequestHeader('Content-Type', 'application/json');
 ajax.send();
 
-// Load tutor specific fields
-if ('<%= Session["UserName"] %>' == 'tutor') {
-  
-}
-{/* <i class="plus-icon"></i>
-            <a href="#">Προσθήκη νέας ανακοίνωσης</a> */}
-
 /**
  * 
  * @param {*} no 
@@ -35,14 +33,45 @@ if ('<%= Session["UserName"] %>' == 'tutor') {
 function list_item(no, date, subject, text, isLinked) {
   let item = (
     '<li class="list-box">'+
-        '<h2>Ανακοίνωση '+no+'</h2>'+
-        '<p><span class="bold-text">Ημερομηνία: </span>'+date+'</p>'+
-       '<p class="subject"><span class="bold-text">Θέμα: </span>'+subject+'</p>'+
-        '<p>'+text+'</p>');
+      '<div class="header">'+
+        '<h2>Ανακοίνωση '+no+'</h2>');
+
+  // Add the edit/delete buttons only for the right user
+  if (userRole === 'tutor') {
+    item += '<button class="edit_btn" onclick="show_form()"></button>'+
+            '<button class="delete_btn"></button>';
+  }
+
+  // Rest tags remain the same
+  item += '</div>'+
+          '<p><span class="bold-text">Ημερομηνία: </span>'+date+'</p>'+
+          '<p class="subject"><span class="bold-text">Θέμα: </span>'+subject+'</p>'+
+          '<p>'+text+'</p>';
 
   if (isLinked != 0) {
     item += '<a href="./homework.php">«Εργασίες»</a>';
   }
   item += '</li>';
   return item;
+}
+
+/**
+ *
+ * @param {*} name
+ * @return {*}
+ */
+function getCookie(name) {
+  cookies = decodeURIComponent(document.cookie).split(';');
+  for (c of cookies) {
+    const searchVal = name+'=';
+    // Trim
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+
+    if (c.indexOf(searchVal) == 0) {
+      return c.substring(searchVal.length, c.length);
+    }
+  }
+  return '';
 }

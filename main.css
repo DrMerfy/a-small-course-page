@@ -9,6 +9,8 @@
     --color-accent-dark: #932C61;
     --color-accent-darker: #470024;
     --color-accent-faded: rgb(82, 46, 64);
+    --color-comp: #01E000;
+    --color-comp-dark: #00af00; 
     --color-error: #F9690E;
 }
 
@@ -289,10 +291,8 @@ a:visited {
 /* Announcements Page */
 
 #options {
-    display: flex;
-    flex-direction: row;
     height: 1rem; width: auto;
-    margin-bottom: 30px;
+    padding-bottom: 30px;
 }
 
 .plus-icon {
@@ -305,6 +305,17 @@ a:visited {
     margin-right: 5px;
 }
 
+.new_announcement_btn {
+    background: 0;
+    border: 0;
+    color: var(--color-accent-light);
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    height: 100%; width: auto;
+}
+
 .list-box {
     border: solid 3px var(--color-light-gray);
     border-radius: 6px;
@@ -314,11 +325,45 @@ a:visited {
     width: 50vw; max-width: 600px;
 }
 
-.list-box > h2 {
+.list-box > .header {
+    align-items: stretch;
+    display: flex;
+    flex-direction: row;
+    height: 20px; width: 100%;
+    justify-content: flex-start;
+    margin-bottom: 10px;
+}
+
+.list-box > .header > h2 {
+    align-self: center;
     color: var(--color-accent-analog);
     font-weight: bold;
     text-align: left;
     text-transform: capitalize;
+}
+
+.list-box > .header > button {
+    background: 0;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 0;
+    cursor: pointer;
+    margin-left: 10px;
+    width: 17px;
+}
+
+.list-box > .header > .edit_btn {
+    background-image: url(./images/icons/edit-solid.svg);
+    width: 20px;
+}
+
+.list-box > .header > .delete_btn {
+    background-image: url(./images/icons/trash-solid.svg);
+}
+
+.list-box > .header > .delete_btn:hover {
+    background-image: url(./images/icons/trash-solid-red.svg);
 }
 
 .list-box > .subject {
@@ -327,6 +372,48 @@ a:visited {
 
 .list-box > * {
     margin-bottom: 5px;
+}
+
+.modal-form {
+    background-color: white;
+    border: solid 5px var(--color-accent-analog);
+    border-radius: 5px;
+    box-shadow: 0 0 80px -15px black;
+    color: black; 
+    display: none;
+    min-height: 50vh; min-width: 60vw;
+    padding: 10px 20px;
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: .6s;
+}
+
+.modal-form > button {
+    background: 0;
+    border: 0;
+    cursor: pointer;
+    font-size: 2rem;
+}
+
+.modal-form > form {
+    position: relative;
+    padding-bottom: 10vh;
+}
+
+.modal-form input[type=checkbox] {
+    color: black;
+}
+
+.modal-form .sumbit-btn {
+    background-color: var(--color-comp-dark);
+    border: 0;
+    border-radius: 15px;
+    bottom: 0; right: 0;
+    cursor: pointer;
+    height: 10vh; width: 10vw;
+    position: absolute;
+    z-index: 1;
 }
 
 #bottom-arrow {
