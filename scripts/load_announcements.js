@@ -7,13 +7,13 @@ if ( userRole === 'tutor') {
 
 // Load announcements
 const ajax = new XMLHttpRequest();
-ajax.onreadystatechange = function() {
+ajax.onreadystatechange = function(loading) {
   if (this.readyState == 4 && this.status == 200) {
     const response = JSON.parse(this.responseText)['announcements'];
     for (item of response) {
-      document.getElementById('announcements-list')
-          .innerHTML += list_item(item['no'], item['date'],
-              item['subject'], item['text'], item['isLinked']);
+      document.getElementById('announcements-list').appendChild(
+          list_item(item['no'], item['date'],
+              item['subject'], item['text'], item['isLinked']));
     }
   }
 };
@@ -23,26 +23,28 @@ ajax.setRequestHeader('Content-Type', 'application/json');
 ajax.send();
 
 /**
- * 
- * @param {*} no 
- * @param {*} date 
- * @param {*} subject 
- * @param {*} text 
- * @param {*} isLinked 
+ *
+ * @param {*} no
+ * @param {*} date
+ * @param {*} subject
+ * @param {*} text
+ * @param {*} isLinked
+ * @return {*}
  */
 function list_item(no, date, subject, text, isLinked) {
   let item = (
-    '<li class="list-box">'+
-      '<div class="header">'+
-        '<h2>Ανακοίνωση '+no+'</h2>');
+    '<div class="header">'+
+      '<h2>Ανακοίνωση '+no+'</h2>');
 
   // Add the edit/delete buttons only for the right user
   if (userRole === 'tutor') {
-    item += '<button class="edit_btn" onclick="show_form()"></button>'+
-            '<button class="delete_btn"></button>';
+    item += '<button class="edit_btn" onclick='+
+    '"show_form(`'+no+'`,`'+date+'`,`'+subject+'`,`'+text+'`,`'+isLinked+'`)"></button>'+
+            '<button class="delete_btn" onclick='+
+            '"delete_form(`'+no+'`)"></button>';
   }
 
-  // Rest tags remain the same
+  // Rest of the tags remain the same
   item += '</div>'+
           '<p><span class="bold-text">Ημερομηνία: </span>'+date+'</p>'+
           '<p class="subject"><span class="bold-text">Θέμα: </span>'+subject+'</p>'+
@@ -51,8 +53,13 @@ function list_item(no, date, subject, text, isLinked) {
   if (isLinked != 0) {
     item += '<a href="./homework.php">«Εργασίες»</a>';
   }
-  item += '</li>';
-  return item;
+
+  container = document.createElement('li');
+  container.classList.add('list-box');
+  container.id = 'announce_box_'+no;
+  container.innerHTML = item;
+
+  return container;
 }
 
 /**

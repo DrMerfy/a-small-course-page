@@ -13,6 +13,7 @@
 
     function sanetize($data) {
         $data = trim($data);
+        $data = preg_replace('~[\r\n]+~', '', $data); // remove new lines
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;

@@ -6,7 +6,7 @@ arrow.classList = 'none';
 // Show the arrow for going to the top only when it is needed
 document.getElementsByTagName('body')[0].onscroll = (event) => {
     if (window.scrollY > 100)
-        arrow.classList = ''; 
+        arrow.classList = '';
 
     if (window.scrollY < 100)
         arrow.classList = 'none';

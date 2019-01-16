@@ -40,6 +40,9 @@
             <!-- async loading of data -->
         </ul>
 
+        <!--This element's behaviour is also affected by the bottom_arrow.js -->
+        <span id="bottom-arrow" onclick="scrollToTop()"></span>
+
         <!-- Modal form for adding/editing the announcements -->
         <div class="modal-form">
             <button aria-label="close edit form" onclick="close_form()">&times;</button>
@@ -57,9 +60,6 @@
                 <button class="sumbit-btn" type="button" onkeyup="checkForEnterAndSumbit(event)" onclick="sumbit_form()">Αποθήκευση</button>
             </form>
         </div>
-
-        <!--This element's behaviour is also affected by the bottom_arrow.js -->
-        <span id="bottom-arrow" onclick="scrollToTop()"></span>
     </main>
 
 </body>
