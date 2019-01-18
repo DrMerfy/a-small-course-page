@@ -44,7 +44,7 @@ function sumbit_form() {
 
   if (!error) {
     if (isEdit) {
-      update_form_date(currentNo, subject.value, text.value, isLinked);
+      update_form_data(currentNo, subject.value, text.value, isLinked);
     } else {
       post_form_data(subject.value, text.value, isLinked);
     }
@@ -78,13 +78,10 @@ function close_form() {
 function delete_form(no) {
   const ajax = new XMLHttpRequest();
   ajax.onreadystatechange = function() {
-    console.log(this.responseText);
-
     if (this.readyState == 4 && this.status == 200) {
       const response = JSON.parse(this.responseText);
       // Delete the item
       const item = document.getElementById('announce_box_'+response['no']);
-      console.log(item);
       item.parentNode.removeChild(item);
     }
   };
@@ -124,7 +121,7 @@ function post_form_data(subject, text, isLinked) {
  * @param {*} text 
  * @param {*} isLinked 
  */
-function update_form_date(no, subject, text, isLinked) {
+function update_form_data(no, subject, text, isLinked) {
   const ajax = new XMLHttpRequest();
   ajax.onreadystatechange = function() {
     if (this.readyState == 4 && this.status == 201) {

@@ -18,6 +18,8 @@
 
     <!--Scripts for interaction-->
     <script defer src="../scripts/bottom_arrow.js"></script>
+    <script defer src="../scripts/load_documents.js"></script>
+    <script defer src="../scripts/form_document.js"></script>
 </head>
 <body>
     <nav>
@@ -31,56 +33,29 @@
     </nav>
     <main>
         <h1>Έγγραφα μαθήματος</h1>
-        <ul>
-            <li class="list-box doc-box">
-                <h2>Τίτλος εγγράφου 1</h2>
-                <p><span class="bold-text">Περιγραφή: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quo.</p>
-                <a href="../files/file1.doc">Download</a>
-            </li>
-            <li class="list-box doc-box">
-                <h2>Τίτλος εγγράφου 2</h2>
-                <p><span class="bold-text">Περιγραφή: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quo.</p>
-                <a href="../files/file2.doc">Download</a>
-            </li>
-            <li class="list-box doc-box">
-                <h2>Τίτλος εγγράφου 3</h2>
-                <p><span class="bold-text">Περιγραφή: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quo.</p>
-                <a href="../files/file3.doc">Download</a>
-            </li>
-            <li class="list-box doc-box">
-                <h2>Τίτλος εγγράφου 4</h2>
-                <p><span class="bold-text">Περιγραφή: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quo.</p>
-                <a href="../files/file4.doc">Download</a>
-            </li>
-            <li class="list-box doc-box">
-                <h2>Τίτλος εγγράφου 5</h2>
-                <p><span class="bold-text">Περιγραφή: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quo.</p>
-                <a href="../files/file5.doc">Download</a>
-            </li>
-            <li class="list-box doc-box">
-                <h2>Τίτλος εγγράφου 6</h2>
-                <p><span class="bold-text">Περιγραφή: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quo.</p>
-                <a href="../files/file6.doc">Download</a>
-            </li>
-            <li class="list-box doc-box">
-                <h2>Τίτλος εγγράφου 7</h2>
-                <p><span class="bold-text">Περιγραφή: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quo.</p>
-                <a href="../files/file7.doc">Download</a>
-            </li>
-            <li class="list-box doc-box">
-                <h2>Τίτλος εγγράφου 8</h2>
-                <p><span class="bold-text">Περιγραφή: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quo.</p>
-                <a href="../files/file8.doc">Download</a>
-            </li>
-            <li class="list-box doc-box">
-                <h2>Τίτλος εγγράφου 9</h2>
-                <p><span class="bold-text">Περιγραφή: </span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, quo.</p>
-                <a href="../files/file9.doc">Download</a>
-            </li>
+        <div id="options">
+        </div>
+        <ul id="documents-list">
+            <!-- async loading of data -->
 
             <!--This element's behaviour is also affected by the bottom_arrow.js -->
             <span id="bottom-arrow" onclick="scrollToTop()"></span>
         </ul>
+
+        <!-- Modal form for adding/editing the announcements -->
+        <div class="modal-form">
+            <button aria-label="close edit form" onclick="close_form()">&times;</button>
+            <form>
+                <p class="bold-text">Τίτλος:</p>
+                <input class="title_input" type="text">
+                <p class="bold-text">Περιγραφή:</p>
+                <textarea class="description_input" type="text" cols="30" rows="10"></textarea>
+                <p class="bold-text">Αρχείο:</p>
+                <p id="previous-file-name" class="none"></p>
+                <input type="file" name="file_to_upload" class="file-upload">
+                <button class="sumbit-btn" type="button" onkeyup="checkForEnterAndSumbit(event)" onclick="sumbit_form()">Αποθήκευση</button>
+            </form>
+        </div>
     </main>
 
 </body>
