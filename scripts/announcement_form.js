@@ -106,6 +106,8 @@ function post_form_data(subject, text, isLinked) {
       document.getElementById('announcements-list').appendChild(
         list_item(item['no'], item['date'],
               item['subject'], item['text'], item['isLinked']));
+      // Scroll to the added element
+      document.getElementById('announce_box_'+item['no']).scrollIntoView({behavior: 'smooth'});
     }
   };
 

@@ -67,4 +67,6 @@
             die('{"delete": "ok", "no": "'.$no.'"}');
         }
     }
+
+    http_response_code(500);
 ?>

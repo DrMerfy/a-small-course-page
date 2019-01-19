@@ -18,6 +18,8 @@
 
      <!--Scripts for interaction-->
      <script defer src="../scripts/bottom_arrow.js"></script>
+     <script defer src="../scripts/load_homework.js"></script>
+     <script defer src="../scripts/form_homework.js"></script>     
 </head>
 <body>
     <nav>
@@ -31,62 +33,32 @@
     </nav>
     <main>
         <h1>Εργασίες</h1>
-        <ul>
-            <li class="list-box homework-box">
-                <h2>Εργασία 1</h2>
-                <h3><span class="bold-text">Στόχοι: </span>Οι στόχοι της εργασίας είναι</h3>
-                <ul>
-                    <li>Στόχος 1</li>
-                    <li>Στόχος 2</li>
-                    <li>Στόχος 3</li>
-                </ul>
-                <h3 class="bold-text">Εκφώνηση:</h3>
-                <p>Κατεβάστε την εκφώνηση της εργασίας από εδώ: <a href="../files/ergasia1.doc">εκφώνηση εργασίας</a></p>
-                <h3 class="bold-text">Παραδοτέρα:</h3>
-                <ul>
-                    <li>Γραπτή αναφορά σε word</li>
-                    <li>Παρουσίαση σε powerpoint</li>
-                </ul>
-                <p><span class="empasize-text">Ημερομηνία παράδοσης: </span>12/5/2009</p>
-            </li>
-
-            <li class="list-box homework-box">
-                <h2>Εργασία 2</h2>
-                <h3><span class="bold-text">Στόχοι: </span>Οι στόχοι της εργασίας είναι</h3>
-                <ul>
-                    <li>Στόχος 1</li>
-                    <li>Στόχος 2</li>
-                    <li>Στόχος 3</li>
-                    <li>Στόχος 4</li>
-                </ul>
-                <h3 class="bold-text">Εκφώνηση:</h3>
-                <p>Κατεβάστε την εκφώνηση της εργασίας από εδώ: <a href="../files/ergasia2.doc">εκφώνηση εργασίας</a></p>
-                <h3 class="bold-text">Παραδοτέρα:</h3>
-                <ul>
-                    <li>Γραπτή αναφορά σε word</li>
-                    <li>Παρουσίαση σε powerpoint</li>
-                </ul>
-                <p><span class="empasize-text">Ημερομηνία παράδοσης: </span>10/5/2009</p>
-            </li>
-
-            <li class="list-box homework-box">
-                <h2>Εργασία 3</h2>
-                <h3><span class="bold-text">Στόχοι: </span>Οι στόχοι της εργασίας είναι</h3>
-                <ul>
-                    <li>Στόχος 1</li>
-                    <li>Στόχος 2</li>
-                    <li>Στόχος 3</li>
-                </ul>
-                <h3 class="bold-text">Εκφώνηση:</h3>
-                <p>Κατεβάστε την εκφώνηση της εργασίας από εδώ: <a href="../files/ergasia3.doc">εκφώνηση εργασίας</a></p>
-                <h3 class="bold-text">Παραδοτέρα:</h3>
-                <ul>
-                    <li>Γραπτή αναφορά σε word</li>
-                    <li>Παρουσίαση σε powerpoint</li>
-                </ul>
-                <p><span class="empasize-text">Ημερομηνία παράδοσης: </span>25/4/2009</p>
-            </li>
+        <div id="options">
+        </div>
+        <ul id="homework-list">
+            <!-- async loading of data -->
         </ul>
+
+        <!-- Modal form for adding/editing the announcements -->
+        <div class="modal-form">
+            <button aria-label="close edit form" onclick="close_form()">&times;</button>
+            <form>
+                <p class="bold-text">Τίτλος:</p>
+                <input class="title_input" type="text">
+                <p class="bold-text">Στόχοι (χωρισμένοι με κόμμα):</p>
+                <input class="goals_input" type="text">
+                <p class="bold-text">Περιγραφή:</p>
+                <textarea class="description_input" type="text" cols="30" rows="10"></textarea>
+                <p class="bold-text">Παραδοτέα (χωρισμένα με κόμμα):</p>
+                <input class="logistics_input" type="text">
+                <p class="bold-text">Ημερομηνία παράδοσης:</p>
+                <input class="date_input" type="date">
+                <p class="bold-text">Αρχείο:</p>
+                <p id="previous-file-name" class="none"></p>
+                <input type="file" name="file_to_upload" class="file-upload">
+                <button class="sumbit-btn" type="button" onkeyup="checkForEnterAndSumbit(event)" onclick="sumbit_form()">Αποθήκευση</button>
+            </form>
+        </div>
 
         <!--This element's behaviour is also affected by the bottom_arrow.js -->
         <span id="bottom-arrow" onclick="scrollToTop()"></span>

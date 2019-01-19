@@ -12,7 +12,7 @@ let previousLocation;
  * @param {*} desciption
  * @param {*} location
  */
-function show_form(no, title, desciption, location) {
+function show_form(no, title, goals, desciption, logistics, date, location) {
   const filename = document.getElementById('previous-file-name');
 
   if (title) {
@@ -22,7 +22,10 @@ function show_form(no, title, desciption, location) {
     location = location.split('/');
     // populate the form elements
     form.getElementsByClassName('title_input')[0].value = title;
+    form.getElementsByClassName('goals_input')[0].value = goals;
     form.getElementsByClassName('description_input')[0].value = desciption;
+    form.getElementsByClassName('logistics_input')[0].value = logistics;
+    form.getElementsByClassName('date_input')[0].value = date;
     filename.innerHTML = location[location.length - 1];
     filename.classList = '';
   } else {
@@ -46,10 +49,28 @@ function sumbit_form() {
     title.style.borderColor = style.getPropertyValue('--color-error');
     error = true;
   }
+  const goals = form.getElementsByClassName('goals_input')[0];
+  if (goals.value.length < 1) {
+    goals.style.borderWidth = '2px';
+    goals.style.borderColor = style.getPropertyValue('--color-error');
+    error = true;
+  }
   const description = form.getElementsByClassName('description_input')[0];
   if (description.value.length < 1) {
     description.style.borderWidth = '2px';
     description.style.borderColor = style.getPropertyValue('--color-error');
+    error = true;
+  }
+  const logistics = form.getElementsByClassName('logistics_input')[0];
+  if (logistics.value.length < 1) {
+    logistics.style.borderWidth = '2px';
+    logistics.style.borderColor = style.getPropertyValue('--color-error');
+    error = true;
+  }
+  const date = form.getElementsByClassName('date_input')[0];
+  if (date.value.length < 1) {
+    date.style.borderWidth = '2px';
+    date.style.borderColor = style.getPropertyValue('--color-error');
     error = true;
   }
   let file = form.getElementsByClassName('file-upload')[0];
@@ -68,7 +89,10 @@ function sumbit_form() {
         upload_file(file.files[0], (json) => update_form_data(JSON.stringify({
           'no': currentNo,
           'title': title.value,
+          'goals': goals.value,
           'description': description.value,
+          'logistics': logistics.value,
+          'date': date.value,
           'location': json['location'],
         })));
       } else {
@@ -76,7 +100,10 @@ function sumbit_form() {
         update_form_data(JSON.stringify({
           'no': currentNo,
           'title': title.value,
+          'goals': goals.value,
           'description': description.value,
+          'logistics': logistics.value,
+          'date': date.value,
           'location': previousLocation,
         }));
       }
@@ -84,7 +111,10 @@ function sumbit_form() {
       // Upload the file
       upload_file(file.files[0], (json) => post_form_data(JSON.stringify({
         'title': title.value,
+        'goals': goals.value,
         'description': description.value,
+        'logistics': logistics.value,
+        'date': date.value,
         'location': json['location'],
       }))); // also posts the data and updates DOM
     }
@@ -116,14 +146,14 @@ function close_form() {
  * @param {*} data
  */
 function delete_form(no) {
-  fetch('../server/endpoint_document.php', {
+  fetch('../server/endpoint_homework.php', {
     method: 'DELETE',
     headers: {'content-type': 'application/json'},
     body: JSON.stringify({'no': no}),
   }).then((response)=>{
     response.json().then((json)=>{
       if (json['delete'] == 'ok') {
-        const element = document.getElementById('document_box_'+json['no']);
+        const element = document.getElementById('homework_box_'+json['no']);
         element.parentElement.removeChild(element);
       }
     });
@@ -135,18 +165,19 @@ function delete_form(no) {
  * @param {*} data 
  */
 async function post_form_data(data) {
-  fetch('../server/endpoint_document.php', {
+  fetch('../server/endpoint_homework.php', {
     method: 'POST',
     headers: {'content-type': 'application/json'},
     body: data,
-  }).then((responce) => {
-    responce.json().then((json)=>{
+  }).then((response) => {
+    response.json().then((json)=>{
       // Add the new element
-      document.getElementById('documents-list').appendChild(
-          list_item(json['no'], json['title'],
-              json['description'], json['location']));
+      document.getElementById('homework-list').appendChild(
+          list_item(json['no'], json['title'], json['goals'],
+              json['description'], json['logistics'],
+              json['date'], json['location']));
       // Scroll to the added element
-      document.getElementById('document_box_'+json['no']).scrollIntoView({behavior: 'smooth'});
+      document.getElementById('homework_box_'+json['no']).scrollIntoView({behavior: 'smooth'});
     });
   });
 }
@@ -156,16 +187,16 @@ async function post_form_data(data) {
  * @param {*} data
  */
 function update_form_data(data) {
-  fetch('../server/endpoint_document.php', {
+  fetch('../server/endpoint_homework.php', {
     method: 'PUT',
     headers: {'content-type': 'application/json'},
     body: data,
   }).then((response) =>{
     response.json().then((json) =>{
       // Update the corresponding element
-      const old_element = document.getElementById('document_box_'+json['no']);
-      old_element.parentElement.replaceChild(list_item(json['no'], json['title'],
-          json['description'], json['location']), old_element);
+      const old_element = document.getElementById('homework_box_'+json['no']);
+      old_element.parentElement.replaceChild(list_item(json['no'], json['title'], json['goals'],
+          json['description'], json['logistics'], json['date'], json['location']), old_element);
     });
   });
 }

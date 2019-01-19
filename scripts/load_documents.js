@@ -5,7 +5,7 @@ if ( userRole === 'tutor') {
   document.getElementById('options').innerHTML = '<button class="new_document_btn" onclick="show_form()"><i class="plus-icon"></i>Προσθήκη νέου εγγράφου</button>';
 }
 
-// Load documentsn
+// Load documents
 const ajax = new XMLHttpRequest();
 ajax.onreadystatechange = function() {
   if (this.readyState == 4 && this.status == 200) {
