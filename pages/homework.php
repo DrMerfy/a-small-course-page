@@ -16,14 +16,16 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css" integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css" integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ" crossorigin="anonymous">
 
-     <!--Scripts for interaction-->
-     <script defer src="../scripts/bottom_arrow.js"></script>
-     <script defer src="../scripts/load_homework.js"></script>
-     <script defer src="../scripts/form_homework.js"></script>     
+    <!--Scripts for interaction-->
+    <script defer src="../scripts/bottom_arrow.js"></script>
+    <script defer src="../scripts/get_cookies.js"></script>    
+    <script defer src="../scripts/show_user_tab.js"></script>    
+    <script defer src="../scripts/load_homework.js"></script>
+    <script defer src="../scripts/form_homework.js"></script>     
 </head>
 <body>
     <nav>
-        <ul>
+        <ul id="nav-list">
             <li><a href="./start.php"><i class="fas fa-home"></i>Αρχική σελίδα</a></li>
             <li><a href="./announcement.php"><i class="fas fa-bullhorn"></i>Ανακοινώσεις</a></li>
             <li><a href="./communication.php"><i class="fas fa-comment-alt"></i>Επικοινωνία</a></li>

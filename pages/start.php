@@ -13,12 +13,15 @@
     <link rel="shortcut icon" type="image/png" href="../images/fav-icon.png">
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:400,600&amp;subset=greek" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css" integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css" integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ" crossorigin="anonymous">    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css" integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ" crossorigin="anonymous">
+
+    <script defer src="../scripts/get_cookies.js"></script>    
+    <script defer src="../scripts/show_user_tab.js"></script>    
 </head>
 
 <body>
     <nav>
-        <ul>
+        <ul id="nav-list">
             <li class="selected"><a href="#"><i class="fas fa-home"></i>Αρχική σελίδα</a></li>
             <li><a href="./announcement.php"><i class="fas fa-bullhorn"></i>Ανακοινώσεις</a></li>
             <li><a href="./communication.php"><i class="fas fa-comment-alt"></i>Επικοινωνία</a></li>

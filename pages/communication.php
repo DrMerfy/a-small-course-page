@@ -15,10 +15,14 @@
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed:400,600&amp;subset=greek" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/solid.css" integrity="sha384-uKQOWcYZKOuKmpYpvT0xCFAs/wE157X5Ua3H5onoRAOCNkJAMX/6QF0iXGGQV9cP" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/fontawesome.css" integrity="sha384-HU5rcgG/yUrsDGWsVACclYdzdCcn5yU8V/3V84zSrPDHwZEdjykadlgI6RHrxGrJ" crossorigin="anonymous">
+
+    <script defer src="../scripts/get_cookies.js"></script>    
+    <script defer src="../scripts/show_user_tab.js"></script>
+    <script defer src="../scripts/mail_sender.js"></script>    
 </head>
 <body>
     <nav>
-        <ul>
+        <ul id="nav-list">
             <li><a href="./start.php"><i class="fas fa-home"></i>Αρχική σελίδα</a></li>
             <li><a href="./announcement.php"><i class="fas fa-bullhorn"></i>Ανακοινώσεις</a></li>
             <li class="selected"><a href="./communication.php"><i class="fas fa-comment-alt"></i>Επικοινωνία</a></li>
@@ -38,7 +42,8 @@
                     <input type="text" name="subject" placeholder="Θέμα">
                     <p>Κείμενο:</p>
                     <textarea name="message" cols="20" rows="10" placeholder="Μύνημα"></textarea>
-                    <input type="submit" value="Αποστολή">
+                    <p id="message_sent"class="none">Το email έχει αποσταλεί.</p>
+                    <input type="button" value="Αποστολή" onclick="send_mail()">
                 </form>
             </div>
 

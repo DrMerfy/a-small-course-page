@@ -1,5 +1,3 @@
-const userRole = getCookie('role');
-
 // Load tutor specific fields
 if ( userRole === 'tutor') {
   document.getElementById('options').innerHTML = '<button class="new_document_btn" onclick="show_form()"><i class="plus-icon"></i>Προσθήκη νέου εγγράφου</button>';
@@ -52,25 +50,4 @@ function list_item(no, title, description, location) {
   container.innerHTML = item;
 
   return container;
-}
-
-/**
- *
- * @param {*} name
- * @return {*}
- */
-function getCookie(name) {
-  cookies = decodeURIComponent(document.cookie).split(';');
-  for (c of cookies) {
-    const searchVal = name+'=';
-    // Trim
-    while (c.charAt(0) == ' ') {
-      c = c.substring(1);
-    }
-
-    if (c.indexOf(searchVal) == 0) {
-      return c.substring(searchVal.length, c.length);
-    }
-  }
-  return '';
 }

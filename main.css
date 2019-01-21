@@ -6,6 +6,7 @@
     --color-accent-analog: #601D3F;
     --color-accent-light: #93004B;
     --color-accent-lighter: #E00072;
+    --color-accent-white: #E0D8DD;
     --color-accent-dark: #932C61;
     --color-accent-darker: #470024;
     --color-accent-faded: rgb(82, 46, 64);
@@ -126,7 +127,7 @@ input:focus {
     outline: none;
 }
 
-input[type=submit] {
+input[type=submit], input[type=button] {
     background-color: var(--color-accent);
     border: none;
     border-radius: 5px;
@@ -171,6 +172,12 @@ a:visited {
 .none {
     display: none;
     opacity: 0;
+    transition: .5s;
+}
+
+.fade-in {
+    display: block;
+    opacity: 1;
     transition: .5s;
 }
 
@@ -410,6 +417,10 @@ a:visited {
     color: black;
 }
 
+.modal-form select {
+    margin-bottom: 20px; 
+}
+
 .modal-form .sumbit-btn {
     background-color: var(--color-comp-dark);
     border: 0;
@@ -473,4 +484,53 @@ a:visited {
     color: var(--color-accent);
     font-weight: bold;
     margin-top: 15px;
+}
+
+/* Users */
+table {
+    width: 100%;
+}
+
+table th {
+    background-color: var(--color-accent-darker);
+    border-right: solid 1px right;
+    color: white;
+    font-weight: bold;
+}
+
+table tr {
+    cursor: pointer;
+}
+
+table tr:nth-child(odd) {
+    background-color: var(--color-accent-white);
+}
+
+table tr:hover {
+    background-color: var(--color-accent-lighter);
+}
+
+table td {
+    border-right: solid 1px black;
+    padding: 5px;
+    position: relative;
+    text-align: center;
+}
+
+
+table button {
+    background: 0;
+    background-image: url(./images/icons/trash-solid.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    border: 0;
+    cursor: pointer;
+    height: 100%; width: 100%;
+    left: 0; top: 0;
+    position: absolute;
+}
+
+table button:hover {
+    background-image: url(./images/icons/trash-solid-red.svg);
 }

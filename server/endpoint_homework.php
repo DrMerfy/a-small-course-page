@@ -39,6 +39,7 @@ else if($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $resource = $db->query("INSERT INTO `homework`(`title`, `goals`, `description`, `logistics`, `date`, `location`) VALUES ('$title', '$goals', '$description', '$logistics', '$date', '$location')");
     if ($resource) {
+        create_announcement($title);
         http_response_code(201);
         $insert_res= $db->query("SELECT * FROM homework ORDER BY no DESC LIMIT 1")->fetch_assoc();
         die('{ "no": "'.$insert_res['no'].'", "title": "'.$insert_res['title'].'", "goals": "'. $insert_res['goals'].
@@ -74,6 +75,16 @@ else if($_SERVER["REQUEST_METHOD"] == "DELETE") {
         http_response_code(200);
         die('{"delete": "ok", "no": "'.$no.'"}');
     }
+}
+
+function create_announcement($title) {
+    global $db;
+    $date = date("Y-m-d"); // Don't trust the user
+    $subject = "Ανακοινώθηκε η εργασία.";
+    $text = "Ανακοινώθηκε η εργασία με τίτλο: $title. Μπορείτε να την δείτε εδώ:";
+    $isLinked = 1;
+    
+    $db->query("INSERT INTO `announcements`(`date`, `subject`, `text`, `isLinked`) VALUES ('$date', '$subject', '$text', $isLinked)");
 }
 
 http_response_code(500);
